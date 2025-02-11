@@ -21,21 +21,12 @@ const divide = (a, b) => {
 const operate = (number, operator, numberTwo) => {
     switch (operator) {
         case '+':
-            sum(number, numberTwo)
-            break;
+            return sum(number, numberTwo)
         case '-':
-            sub(number,numberTwo)
-            break;
+            return sub(number,numberTwo)
         case '*':
-            multi(number,numberTwo)
-            break;
+            return multi(number,numberTwo)
         case '/':
-            divide(number,numberTwo)
-            break;
-        default:
-            console.log(operator)
-            break;
+            return divide(number,numberTwo)
     }
 }
-
-const test = (input) =>  console.log(typeof input)
