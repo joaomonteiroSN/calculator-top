@@ -1,6 +1,7 @@
 //html logic
 
 
+//numbers
 const one = document.querySelector('#one');
 const two = document.querySelector('#two');
 const three = document.querySelector('#three');
@@ -12,6 +13,14 @@ const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
 
+//operators
+const plus = document.querySelector('#plus');
+const minus = document.querySelector('#minus');
+const power = document.querySelector('#power');
+const divider = document.querySelector('#divider');
+const equal = document.querySelector('#equal');
+const clear = document.querySelector('#clear');
+
 const buttonNumbers = [
     one, two, three, four, five, six, seven, eight, nine, zero
 ] 
@@ -22,15 +31,23 @@ display.innerHTML = '';
 
 const displayUpdate = (value) => {
     display.innerHTML += `${value}`
+    //calculo pode ser feito usando vetor ou parsefloat ao final
+    number += value
+    console.log(number)
 }
 
+const clearDisplay = () => {
+    display.innerHTML = ''
+}
+
+// number bunttons diplayed logic
 buttonNumbers.map(button => button.addEventListener("click", () => displayUpdate(button.value)))
 
 
 //math logic -----
-let number
-let operator
-let numberTwo
+let number = ''
+let operator = ''
+let numberTwo = ''
 
 const sum = (a, b) => {
     return a + b
