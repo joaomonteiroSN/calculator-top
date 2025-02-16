@@ -13,6 +13,11 @@ const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
 
+const buttonNumbers = [
+    one, two, three, four, five, six, seven, eight, nine, zero
+]
+
+
 //operators
 const plus = document.querySelector('#plus');
 const minus = document.querySelector('#minus');
@@ -21,33 +26,48 @@ const divider = document.querySelector('#divider');
 const equal = document.querySelector('#equal');
 const clear = document.querySelector('#clear');
 
-const buttonNumbers = [
-    one, two, three, four, five, six, seven, eight, nine, zero
-] 
+const buttonOperators = [
+    plus, minus, power, divider
+]
 
 const display = document.querySelector('.display')
 display.innerHTML = '';
 
+//math logic -----
+let number = 0
+let operator = ''
+let numberTwo = 0
+let temp = ''
 
 const displayUpdate = (value) => {
     display.innerHTML += `${value}`
     //calculo pode ser feito usando vetor ou parsefloat ao final
-    number += value
-    console.log(number)
+    temp += value
 }
+
+// number buttons displayed logic
+buttonNumbers.map(button => button.addEventListener("click", () => displayUpdate(button.value)))
+buttonOperators.map(button => button.addEventListener("click", () => {
+    console.log("deu certo")
+    number = parseFloat(temp) 
+    operator = button.value
+    console.log(number)
+    console.log(operator)
+    temp = ''
+    clearDisplay()
+}))
+
+equal.addEventListener("click", () => {
+    numberTwo = parseFloat(temp)
+    console.log(numberTwo)
+    //call operate function
+
+    console.log(operate(number, operator, numberTwo))
+})
 
 const clearDisplay = () => {
     display.innerHTML = ''
 }
-
-// number bunttons diplayed logic
-buttonNumbers.map(button => button.addEventListener("click", () => displayUpdate(button.value)))
-
-
-//math logic -----
-let number = ''
-let operator = ''
-let numberTwo = ''
 
 const sum = (a, b) => {
     return a + b
@@ -65,15 +85,17 @@ const divide = (a, b) => {
     return a / b
 }
 
+//create showResult function
+
 const operate = (number, operator, numberTwo) => {
     switch (operator) {
         case '+':
             return sum(number, numberTwo)
         case '-':
-            return sub(number,numberTwo)
+            return sub(number, numberTwo)
         case '*':
-            return multi(number,numberTwo)
+            return multi(number, numberTwo)
         case '/':
-            return divide(number,numberTwo)
+            return divide(number, numberTwo)
     }
 }
