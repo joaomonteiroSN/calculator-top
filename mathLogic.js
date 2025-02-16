@@ -45,7 +45,10 @@ const displayUpdate = (value) => {
     temp += value
 }
 
-// number buttons displayed logic
+// number buttons displayed logic\
+
+// maybe create just one function for all that  bellow?
+
 buttonNumbers.map(button => button.addEventListener("click", () => displayUpdate(button.value)))
 buttonOperators.map(button => button.addEventListener("click", () => {
     console.log("deu certo")
@@ -86,6 +89,8 @@ const divide = (a, b) => {
 }
 
 //create showResult function
+
+//create clear function
 
 const operate = (number, operator, numberTwo) => {
     switch (operator) {
